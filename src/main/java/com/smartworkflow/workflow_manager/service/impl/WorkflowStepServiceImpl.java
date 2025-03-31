@@ -19,6 +19,14 @@ public class WorkflowStepServiceImpl implements WorkflowStepService {
     private final WorkflowStepMapper workflowStepMapper;
 
     @Override
+    public List<WorkflowStepDTO> getAllSteps() {
+        return workflowStepRepository.findAll()
+                .stream()
+                .map(workflowStepMapper::toDto)
+                .toList();
+    }
+
+    @Override
     public WorkflowStepDTO getStepById(Long id) {
         WorkflowStep step = workflowStepRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Step bulunamadı: " + id));

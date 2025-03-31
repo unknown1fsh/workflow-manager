@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 public interface WorkflowMapper {
 
     @Mapping(source = "createdBy.id", target = "createdById")
+    @Mapping(source = "createdBy.username", target = "createdByName")
     @Mapping(source = "steps", target = "steps")
     WorkflowDTO toDto(Workflow workflow);
 

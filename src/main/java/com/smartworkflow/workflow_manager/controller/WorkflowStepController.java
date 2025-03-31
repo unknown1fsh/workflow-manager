@@ -15,6 +15,11 @@ public class WorkflowStepController {
 
     private final WorkflowStepService stepService;
 
+    @GetMapping
+    public ResponseEntity<List<WorkflowStepDTO>> getAllSteps() {
+        return ResponseEntity.ok(stepService.getAllSteps());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<WorkflowStepDTO> getById(@PathVariable Long id) {
         return ResponseEntity.ok(stepService.getStepById(id));
